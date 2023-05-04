@@ -3,7 +3,7 @@ from .models import *
 # Create your views here.
 
 def RegisterPage(request):
-    return render(request,"app/register.html")
+    return render(request,"app/index.html")
 
 
 def UserRegister(request):
@@ -19,7 +19,7 @@ def UserRegister(request):
 
         if user:
             message ="user already exist"
-            return render(request,"app/register.html",{'msg':message})  
+            return render(request,"app/index.html",{'msg':message})  
         else:
             if password == cpassword:
                user = User.objects.create(Firstname=fname,Lastname=lname,Email=email,Contact=contact,Password=password)
@@ -27,7 +27,7 @@ def UserRegister(request):
                return   render(request,"app/login.html",{'msg':message})
             else:
                 message = "password and confirm password doesnot match"
-                return   render(request,"app/register.html",{'msg':message})
+                return   render(request,"app/index.html",{'msg':message})
                 
 def LoginPage(request):
     return render(request,"app/login.html")    
@@ -51,7 +51,7 @@ def LoginUser(request):
                 return render(request,"app/login.html",{'msg':message})
         else:
             message = "user doesnot exits"
-            return render(request,"app/register.html",{'msg':message})    
+            return render(request,"app/index.html",{'msg':message})    
 
         
         
